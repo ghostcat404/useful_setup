@@ -1,17 +1,4 @@
 #! /bin/bash
-general_setup() {
-	echo "Install oh-my-zsh"
-	sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-
-	echo "Install plugins"
-	git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
-	git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
-
-	sed -i 's/plugins=(git*)/plugins=(git zsh-syntax-highlighting zsh-autosuggestions)/g' ~/.zshrc
-	sed -i 's/%c%/%~%/g' ~/.oh-my-zsh/themes/robbyrussell.zsh-theme
-}
-
-
 
 GREEN_COLOR='\033[0;32m'
 RED_COLOR='\033[0;32m'
@@ -28,7 +15,6 @@ then
 	then
 		apt install git
 	fi
-	general_setup
 fi
 if [[ "$system_name" == "Darwin" ]]
 then
@@ -46,8 +32,4 @@ then
         then
                 brew install git
         fi
-	general_setup
 fi
-
-echo "${GREEN_COLOR} Now please restart your terminal session ${NC}"
-echo -en "${GREEN_COLOR} For Mac OS you need run run iTerm2 and use it in the future ${NC}"
