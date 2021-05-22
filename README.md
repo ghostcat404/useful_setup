@@ -6,9 +6,9 @@
 - [oh-my-zsh for MAC & LINUX](oh-my-zsh_setup)
 
 ## TODO:
-- [x] Jenkins
-- [x] minikube
-- [x] oh-my-zsh
+- [x] ~~Jenkins~~
+- [x] ~~minikube~~
+- [x] ~~oh-my-zsh~~
 - [ ] Kubeflow
 - [ ] MlFlow
 - [ ] Spark
