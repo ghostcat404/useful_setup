@@ -56,3 +56,59 @@ sydo systemctl status mlflow
       Tasks: 11 (limit: 4703)
      Memory: 387.6M
 ```
+
+## Get authentification via nginx
+
+First of all please check nginx [install](nginx_install/install/README.md) and [ssl setup](nginx_install/ssl_setup/README.md)
+
+1. Install utils
+```
+sudo apt-get install apache2-utils
+```
+
+2. Create ```apache2``` directory
+```
+sudo mkdir /etc/apache2
+```
+
+3. Create user
+```
+sudo htpasswd -c /etc/apache2/.htpasswd user1
+```
+
+4. Finally, Let's make some changes in our ```/etc/nginx/sites-available/example.com``` file
+
+```
+server {
+    listen <YOUR_PORT> ssl; # for example 9000
+    include snippets/self-signed.conf;
+    include snippets/ssl-params.conf;
+
+    server_name <YOUR_SERVER_IP_ADRESS>;
+
+    location / {
+        proxy_pass http://localhost:5000; # where 5000 -- default mlflow port
+        include /etc/nginx/proxy_params;
+        proxy_redirect off;
+    }
+}
+server {
+    listen 80;
+    listen [::]:80;
+
+    server_name <YOUR_SERVER_IP_ADRESS>;
+
+    return 302 https://$server_name$request_uri;
+}
+```
+5. Allow your port in Firewall if you use it
+```
+sudo ufw allow '<YOUR_PORT>/tcp'
+```
+
+6. Now restart mlflow service and nginx service
+```
+sudo systemctl restart nginx && sudo systemctl restart mlflow
+```
+
+7. Open ```https://<YOUR_SERVER_IP_ADRESS>:<YOUR_PORT>``` and enter credential from point 3.

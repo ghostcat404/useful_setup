@@ -1,4 +1,4 @@
-# some useful guides
+# Some useful guides
 
 ## Available setups and installations
 - [Jenkins](jenkins_setup/README.md)
@@ -8,6 +8,8 @@
 - [mlflow](mlflow_setup/README.md)
 
 ## TODO:
+
+### Installations
 - [x] ~~Jenkins~~
 - [x] ~~minikube~~
 - [x] ~~oh-my-zsh~~
@@ -18,3 +20,6 @@
 - [ ] ML flow auth nginx
 - [ ] Spark
 - [ ] Hadoop
+
+### User quides
+- [ ] Add something user quide
