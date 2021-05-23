@@ -9,6 +9,7 @@
 - [x] ~~Jenkins~~
 - [x] ~~minikube~~
 - [x] ~~oh-my-zsh~~
+- [ ] nginx
 - [ ] Kubeflow
 - [ ] MlFlow
 - [ ] Spark
