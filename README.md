@@ -9,8 +9,10 @@
 - [x] ~~Jenkins~~
 - [x] ~~minikube~~
 - [x] ~~oh-my-zsh~~
-- [ ] nginx
+- [x] ~~nginx install~~
+- [ ] nginx with ssl
 - [ ] Kubeflow
-- [ ] MlFlow
+- [x] ~~MlFlow~~
+- [ ] ML flow auth nginx
 - [ ] Spark
 - [ ] Hadoop
