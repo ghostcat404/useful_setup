@@ -14,10 +14,10 @@
 - [x] ~~minikube~~
 - [x] ~~oh-my-zsh~~
 - [x] ~~nginx install~~
-- [ ] nginx with ssl
+- [x] ~~nginx with self-signed ssl~~
 - [ ] Kubeflow
 - [x] ~~MlFlow~~
-- [ ] ML flow auth nginx
+- [x] ~~ML flow auth nginx~~
 - [ ] Spark
 - [ ] Hadoop
 
