@@ -4,24 +4,24 @@ If you have your own domain name, you can follow [this guide](https://www.digita
 
 ## Self signed certs
 - Generate cert and key
-```
+```bash
 sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/ssl/private/nginx-selfsigned.key -out /etc/ssl/certs/nginx-selfsigned.crt
 ```
 
 - Create a strong Diffie-Hellman group
-```
+```bash
 sudo openssl dhparam -out /etc/nginx/dhparam.pem 4096
 ```
 
 - create ```/etc/nginx/snippets/self-signed.conf``` and paste
 follow content
-```
+```nginx
 ssl_certificate /etc/ssl/certs/nginx-selfsigned.crt;
 ssl_certificate_key /etc/ssl/private/nginx-selfsigned.key;
 ```
 
 - create ```/etc/nginx/snippets/ssl-params.conf```
-```
+```nginx
 ssl_protocols TLSv1.2;
 ssl_prefer_server_ciphers on;
 ssl_dhparam /etc/nginx/dhparam.pem;
@@ -43,7 +43,7 @@ add_header X-XSS-Protection "1; mode=block";
 ```
 
 - create ```/etc/nginx/sites-available/example.com``` and paste follow content
-```
+```nginx
 server {
     listen 443 ssl;
     listen [::]:443 ssl;
@@ -63,6 +63,12 @@ server {
 
     return 302 https://$server_name$request_uri;
 }
+```
+
+- Link
+
+```bash
+sudo ln -s /etc/nginx/sites-available/your_domain /etc/nginx/sites-enabled/
 ```
 
 - Try to connect to your server. Just put ```https://<YOUR_SERVER_IP_ADRESS>``` in your browser
